@@ -21,11 +21,13 @@ interface RecentExpensesListProps {
 }
 
 export default function RecentExpensesList({ expenses, limit = 5 }: RecentExpensesListProps) {
+  const expensesList = Array.isArray(expenses) ? expenses : [];
+
   return (
     <div className="bg-white/5 rounded-xl border border-white/10 p-6">
       <h3 className="text-xl font-bold text-white mb-4">Recent Expenses</h3>
       <div className="space-y-3 max-h-96 overflow-y-auto">
-        {expenses.slice(0, limit).map((expense) => (
+        {expensesList.slice(0, limit).map((expense) => (
           <div key={expense.expense_id} className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
             <div>
               <p className="text-white font-medium">{expense.vendor_name}</p>

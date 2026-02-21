@@ -47,7 +47,8 @@ export default function QuickStatsSection({
   expenses,
   hasReports,
 }: QuickStatsSectionProps) {
-  const totalExpenses = expenses.reduce((sum, e) => sum + (e.amount || 0), 0);
+  const expensesList = Array.isArray(expenses) ? expenses : [];
+  const totalExpenses = expensesList.reduce((sum, e) => sum + (e.amount || 0), 0);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
